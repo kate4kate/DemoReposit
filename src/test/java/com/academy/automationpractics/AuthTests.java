@@ -9,6 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import com.academy.framework.BaseTest;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
-    public class AuthTests {
+    public class AuthTests  extends BaseTest{
 
         private WebDriver driver;
         private String baseUrl;
