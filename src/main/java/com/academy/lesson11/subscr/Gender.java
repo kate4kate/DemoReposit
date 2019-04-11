@@ -1,8 +1,9 @@
 package com.academy.lesson11.subscr;
 
-public enum  Gender {
-    MALE("м"),
+public enum Gender {
+    MALE ("м"),
     FEMALE("ж");
+
     private String ru;
 
     Gender(String ru) {
@@ -12,6 +13,5 @@ public enum  Gender {
     @Override
     public String toString() {
         return ru;
-
     }
-    }
+}

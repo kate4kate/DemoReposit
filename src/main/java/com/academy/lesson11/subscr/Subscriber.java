@@ -1,32 +1,18 @@
 package com.academy.lesson11.subscr;
-
 public class Subscriber {
-    private Long id;
+	private long id;
 	private String firstName;
 	private String lastName;
-	private Gender gender; //  перечисление Gender для мужского и женского пола
-    private int age;
-    private String phoneNumber;
+	private Gender gender;
+	private int age;
+	private String phoneNumber;
 	private Operator operator;
 
-	@Override
-	public String toString() {
-		return "Subscriber{" +
-				"id=" + id +
-				"|" + firstName + '\'' +
-				"|'" + lastName + '\'' +
-				"|" + gender +
-				"|" + age +
-				"|'" + phoneNumber + '\'' +
-				"|" + operator +
-				'}' +"\n";
-	}
-
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -46,7 +32,7 @@ public class Subscriber {
 		this.lastName = lastName;
 	}
 
-	public  Gender getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
@@ -76,5 +62,18 @@ public class Subscriber {
 
 	public void setOperator(Operator operator) {
 		this.operator = operator;
+	}
+
+	@Override
+	public String toString() {
+		return "Subscriber{" +
+				"id=" + id +
+				"|" + firstName + '\'' +
+				"|'" + lastName + '\'' +
+				"|" + gender +
+				"|" + age +
+				"|'" + phoneNumber + '\'' +
+				"|" + operator +
+				'}' +"\n";
 	}
 }

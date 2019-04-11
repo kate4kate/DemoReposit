@@ -1,16 +1,15 @@
 package com.academy.lesson11.subscr;
 
 public class Operator {
+    private long id;
+    private String name;
 
-private  long id;
-private String name;
+    public long getId() {
+        return id;
+    }
 
-    @Override
-    public String toString() {
-        return "Operator{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -21,11 +20,11 @@ private String name;
         this.name = name;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Operator{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

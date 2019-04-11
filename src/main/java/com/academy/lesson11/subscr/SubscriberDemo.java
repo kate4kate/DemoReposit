@@ -66,8 +66,6 @@ public class SubscriberDemo {
         subscriber4.setPhoneNumber("380670058111");
         subscriber4.setOperator(operatorKievstar);
 
-
-
         List<Subscriber> subscribers = new ArrayList<>();
 
         // => на консоль
@@ -135,7 +133,7 @@ public class SubscriberDemo {
 
         // читаем из файла
         System.out.println("Читаем из файла");
-        try(FileReader fileReader = new FileReader(subscriberDataPath);
+        try(FileReader fileReader = new FileReader(subscriberDataPath2);
             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String row;
             // перебираем все строки
@@ -148,47 +146,66 @@ public class SubscriberDemo {
             e.printStackTrace();
         }
 
+        // Сделаем сортировку по имени
+//        subscribers.sort(new ComparatorByAgeImpl());
+//        subscribers.sort(new ComparatorByFirstNameImpl());
 
-        //сделаем сортировку по имени
+        // Громоздко через анонимный класс
+//        subscribers.sort(new Comparator<Subscriber>() {
+//            @Override
+//            public int compare(Subscriber o1, Subscriber o2) {
+//                return Long.compare(o2.getId(), o1.getId());
+//            }
+//        });
 
-      //  subscribers.sort(new ComparatorByAge1());
-      subscribers.sort(new ComparatorByFirstName());
-      // subscribers.sort((Comparator<Subscriber>) (o1, o2) -> Long.compare(o2.getId(), o2.getId());
+        // Коротко через лямбды
+        subscribers.sort((o1, o2) -> Long.compare(o1.getId(), o2.getId()));
 
+        // Супер-Коротко через ссылку на метод
+        subscribers.sort(Comparator.comparingLong(Subscriber::getId));
+//        subscribers.sort(new ComparatorComplexImpl());
+        subscribers.sort((o1, o2)-> {
+            if (o1.getOperator().getName().equals(o2.getOperator().getName())){
+                return Integer.compare(o2.getAge(), o1.getAge());
+            } else {
+                return o1.getOperator().getName().compareTo(o2.getOperator().getName());
+            }});
 
-               // Пишем в excel
+        // Пишем в excel
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Subscribers");
+        for (int i = 0; i < subscribers.size(); i++) {
+            Subscriber subscriber = subscribers.get(i);
 
-
-        for(int r = 0; r<subscribers.size(); r++){
-            XSSFRow row = sheet.createRow(r);
+            XSSFRow row = sheet.createRow(i);
 
             XSSFCell cellId = row.createCell(0);
-            XSSFCell cellFirstName = row.createCell(1);
-            XSSFCell cellLastName = row.createCell(2);
-            XSSFCell cellGender = row.createCell(3);
-            XSSFCell cellAge = row.createCell(4);
-            XSSFCell cellPhoneNumber = row.createCell(5);
-            XSSFCell cellOperator = row.createCell(6);
+            cellId.setCellValue(subscriber.getId());
 
-            cellId.setCellValue(subscribers.get(r).getId());
-            cellFirstName.setCellValue(subscribers.get(r).getFirstName());
-            cellLastName.setCellValue(subscribers.get(r).getLastName());
-            cellGender.setCellValue(String.valueOf(subscribers.get(r).getGender().toString()));
-            cellAge.setCellValue(subscribers.get(r).getAge());
-            cellPhoneNumber.setCellValue(subscribers.get(r).getPhoneNumber());
-            cellOperator.setCellValue(String.valueOf(subscribers.get(r).getOperator().getName()));
-    }
+            XSSFCell cellLastName = row.createCell(1);
+            cellLastName.setCellValue(subscriber.getLastName());
+
+            XSSFCell cellFirstName = row.createCell(2);
+            cellFirstName.setCellValue(subscriber.getFirstName());
+
+            XSSFCell cellGender = row.createCell(3);
+            cellGender.setCellValue(subscriber.getGender().toString());
+
+            XSSFCell cellAge = row.createCell(4);
+            cellAge.setCellValue(subscriber.getAge());
+
+            XSSFCell cellPhoneNumber = row.createCell(5);
+            cellPhoneNumber.setCellValue(subscriber.getPhoneNumber());
+
+            XSSFCell cellOperatorName = row.createCell(6);
+            cellOperatorName.setCellValue(subscriber.getOperator().getName());
+        }
+
         try(FileOutputStream out = new FileOutputStream(new File(subscriberExcelDataPath))) {
             workbook.write(out);
-            out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
 
     }
 }
