@@ -32,6 +32,4 @@ public class MainPage  extends BasePage {
         return this;
     }
 
-    private void waitUntilTextChanged(String enterLinkLocator, String oldMessage) {
-    }
 }
