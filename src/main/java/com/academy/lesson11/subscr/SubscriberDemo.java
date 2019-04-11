@@ -1,4 +1,4 @@
-package academy.lesson11.subscr;
+package com.academy.lesson11.subscr;
 
 
 import org.apache.poi.xssf.usermodel.XSSFCell;

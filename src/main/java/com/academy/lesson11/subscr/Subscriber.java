@@ -1,4 +1,4 @@
-package academy.lesson11.subscr;
+package com.academy.lesson11.subscr;
 
 public class Subscriber {
     private Long id;

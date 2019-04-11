@@ -1,8 +1,8 @@
-package academy.lesson11.homeTask;
+package com.academy.lesson11.homeTask;
 
-import academy.lesson11.subscr.Gender;
-import academy.lesson11.subscr.Operator;
-import academy.lesson11.subscr.Subscriber;
+import com.academy.lesson11.subscr.Gender;
+import com.academy.lesson11.subscr.Operator;
+import com.academy.lesson11.subscr.Subscriber;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -12,10 +12,10 @@ import java.io.*;
 import java.util.*;
 
 public class SubscribersExcel {
-    private static String pathMaleFirstNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\academy\\lesson11\\homeTask\\мужские имена.txt";
-    private static String pathMaleLastNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\academy\\lesson11\\homeTask\\мужские фамилии.txt";
-    private static String pathFemaleFirstNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\academy\\lesson11\\homeTask\\женские имена.txt";
-    private static String pathFemaleLastNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\academy\\lesson11\\homeTask\\женские фамилии.txt";
+    private static String pathMaleFirstNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\com.academy\\lesson11\\homeTask\\мужские имена.txt";
+    private static String pathMaleLastNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\com.academy\\lesson11\\homeTask\\мужские фамилии.txt";
+    private static String pathFemaleFirstNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\com.academy\\lesson11\\homeTask\\женские имена.txt";
+    private static String pathFemaleLastNames = "D:\\Automation\\MAVENproject\\src\\main\\java\\com.academy\\lesson11\\homeTask\\женские фамилии.txt";
 
     private static String subscriberDataPath = "subscriber.txt";
     private static String subscriberDataPath2 = "subscriber2.txt";
