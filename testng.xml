@@ -6,14 +6,14 @@
     <test name="Login Tests Chrome">
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="com.academy.automationpractics.AuthTests" />
+            <class name="com.academy.automationpractice.AuthTests" />
         </classes>
     </test>
 
     <test name="Login Tests Firefox">
         <parameter name="browser" value="firefox" />
         <classes>
-            <class name="com.academy.automationpractics.AuthTests" />
+            <class name="com.academy.automationpractice.AuthTests" />
         </classes>
     </test>
 </suite>

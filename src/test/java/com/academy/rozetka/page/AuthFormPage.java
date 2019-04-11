@@ -1,21 +1,16 @@
 package com.academy.rozetka.page;
-
 import com.academy.framework.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class AuthFormPage  extends BasePage {
+public class AuthFormPage extends BasePage {
 
-    private WebDriver driver;
-
-    @FindBy(id = "auth_email")
+    @FindBy(id="auth_email")
     WebElement loginField;
 
-    @FindBy(id = "auth_pass")
+    @FindBy(id="auth_pass")
     WebElement passwordField;
-
 
     @FindBy(css = "body > app-root > div > div:nth-child(2) > div.app-rz-common > auth-modal > modal-window > div > div > div > auth-content > div > form > div > button")
     WebElement submitButton;
@@ -24,36 +19,27 @@ public class AuthFormPage  extends BasePage {
         super(driver);
     }
 
-
-    public AuthFormPage enterLogin(String login){
-
+    public AuthFormPage enterLogin (String login) {
 //        loginField.click();
 //        loginField.clear();
-//        loginField.sendKeys("katerina.zhernovaya@gmail.com");
-
+//        loginField.sendKeys(login);
         enterText(loginField, login);
-        return  this;
-
+        return this;
     }
 
-
-    public  AuthFormPage enterPassword(String password){
-
-        passwordField.click();
-        passwordField.clear();
-        passwordField.sendKeys("lovemylife09");
-
+    public AuthFormPage enterPassword (String password){
+//        passwordField.click();
+//        passwordField.clear();
+//        passwordField.sendKeys(password);
+        enterText(passwordField, password);
         return  this;
-
     }
 
-
-    public MainPage submit(){
+    public BasePage submit (boolean isCorrect){
         submitButton.click();
-
-        return new MainPage(driver);
+        if (isCorrect)
+            return new MainPage (driver);
+        else
+            return this;
     }
-
-
-
 }
